@@ -26,13 +26,11 @@
         .modal-exit { opacity: 1; transform: scale(1); }
         .modal-exit-active { opacity: 0; transform: scale(0.95) translateY(10px); transition: all 0.2s ease-in; }
 
-        /* Swiftz Style Soft Shadow */
         .swiftz-shadow { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); }
     </style>
 </head>
 <body class="flex justify-center min-h-screen text-gray-800 no-select">
 
-    <!-- App Container (mx-auto for desktop center, w-full for mobile full width) -->
     <div class="w-full sm:max-w-md bg-white relative flex flex-col h-[100dvh] sm:border-x sm:border-gray-200 sm:shadow-2xl overflow-hidden mx-auto">
         
         <!-- Header -->
@@ -47,7 +45,7 @@
                 </button>
             </div>
 
-            <!-- Mode Toggle Switch (iOS Style) -->
+            <!-- Mode Toggle Switch -->
             <div class="flex bg-[#f0f2f5] p-1.5 rounded-[16px] relative mb-2">
                 <div id="mode-slider" class="absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-transform duration-300 left-1.5"></div>
                 <button onclick="switchMode('customer')" class="flex-1 py-2 text-[14px] font-bold rounded-[12px] relative z-10 transition-colors text-gray-900" id="btn-mode-customer">สำหรับลูกค้า</button>
@@ -62,11 +60,10 @@
                  CUSTOMER MODE (ลูกค้า)
                  ============================================== -->
             <div id="view-customer" class="block transition-opacity duration-300">
-                <!-- Hero Card (ยอดเงินที่ต้องเติมเพิ่ม) -->
                 <div class="bg-gradient-to-br from-[#ebf4ff] to-[#f8faff] rounded-[28px] p-6 mb-6 relative overflow-hidden swiftz-shadow border border-blue-50">
                     <p class="text-[14px] text-gray-500 font-medium mb-1">ต้องเติมเงินเพิ่มอีก</p>
                     <h2 class="text-[3.5rem] font-bold text-gray-900 leading-none tracking-tighter mb-6 flex items-baseline">
-                        <span class="text-3xl mr-2 text-blue-600 font-medium">$</span><span id="main-topup">0</span>
+                        <span class="text-3xl mr-2 text-blue-600 font-medium">฿</span><span id="main-topup">0</span>
                     </h2>
                     
                     <div class="flex gap-3">
@@ -87,16 +84,15 @@
                     </div>
                 </div>
 
-                <h2 class="text-[16px] font-bold text-gray-800 mb-3.5 px-1">กรอกข้อมูล</h2>
+                <h2 class="text-[16px] font-bold text-gray-800 mb-3.5 px-1">กรอกข้อมูลส่วนตัว</h2>
                 <div class="flex flex-col gap-3">
-                    <!-- 1. Price -->
-                    <div id="box-price" onclick="openKeypad('price', 'ระบุราคาสินค้า')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all hover:bg-gray-100 border-2 border-transparent">
+                    <div id="box-price" onclick="openKeypad('price', 'ระบุราคาสินค้า')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all border-2 border-transparent hover:bg-gray-100">
                         <div class="flex items-center gap-3.5">
                             <div class="w-11 h-11 rounded-full bg-white swiftz-shadow flex items-center justify-center text-blue-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-[13px] font-medium text-gray-500 mb-0.5">1. ราคาสินค้าที่จะซื้อ</p>
+                                <p class="text-[13px] font-medium text-gray-500 mb-0.5">1. ราคาสินค้า/ส่วนที่ต้องหาร</p>
                                 <div class="flex items-baseline gap-1">
                                     <span class="text-gray-400 text-sm">฿</span>
                                     <span id="val-price" class="text-[22px] font-bold text-gray-900">0</span>
@@ -105,8 +101,7 @@
                         </div>
                     </div>
 
-                    <!-- 2. Pocket -->
-                    <div id="box-pocket" onclick="openKeypad('pocket', 'ยอดเงินในเป๋าตัง')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all hover:bg-gray-100 border-2 border-transparent">
+                    <div id="box-pocket" onclick="openKeypad('pocket', 'ยอดเงินในเป๋าตัง')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all border-2 border-transparent hover:bg-gray-100">
                         <div class="flex items-center gap-3.5">
                             <div class="w-11 h-11 rounded-full bg-white swiftz-shadow flex items-center justify-center text-gray-700">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
@@ -121,8 +116,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. Quota -->
-                    <div id="box-quota" onclick="openKeypad('quota', 'สิทธิรัฐคงเหลือ')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all hover:bg-gray-100 border-2 border-transparent">
+                    <div id="box-quota" onclick="openKeypad('quota', 'สิทธิรัฐคงเหลือ')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all border-2 border-transparent hover:bg-gray-100">
                         <div class="flex items-center gap-3.5">
                             <div class="w-11 h-11 rounded-full bg-white swiftz-shadow flex items-center justify-center text-green-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -143,56 +137,44 @@
             </div>
 
             <!-- ==============================================
-                 MERCHANT MODE (ร้านค้า)
+                 MERCHANT MODE (ร้านค้า) - 3 SPLIT MODES
                  ============================================== -->
             <div id="view-merchant" class="hidden transition-opacity duration-300">
-                <!-- Hero Card Merchant -->
-                <div class="bg-gradient-to-br from-[#f3f0ff] to-[#f8faff] rounded-[28px] p-6 mb-6 relative overflow-hidden swiftz-shadow border border-indigo-50">
-                    <p class="text-[14px] text-gray-500 font-medium mb-1">กดแอปเป๋าตัง สแกนเครื่องละ</p>
-                    <h2 class="text-[3.5rem] font-bold text-gray-900 leading-none tracking-tighter mb-5 flex items-baseline">
-                        <span class="text-3xl mr-2 text-indigo-500 font-medium">$</span><span id="merch-scan">0</span>
+                <!-- Hero Card Merchant (สรุปเก็บเงินสด) -->
+                <div class="bg-gradient-to-br from-[#fff7ed] to-[#fffaf5] rounded-[28px] p-6 mb-6 relative overflow-hidden swiftz-shadow border border-orange-100">
+                    <p class="text-[14px] text-orange-800 font-medium mb-1 flex items-center gap-1.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        ยอดเก็บเงินสด/โอนเพิ่ม (รวม)
+                    </p>
+                    <h2 class="text-[3.5rem] font-bold text-orange-600 leading-none tracking-tighter mb-5 flex items-baseline">
+                        <span class="text-3xl mr-2 font-medium">฿</span><span id="merch-cash">0</span>
                     </h2>
                     
-                    <div class="flex flex-col gap-3">
-                        <div class="bg-white rounded-[20px] p-4 swiftz-shadow">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-[13px] text-gray-500 font-medium flex items-center gap-2">
-                                    <div class="w-2 h-2 rounded-full bg-green-400"></div> รัฐช่วยออกรวม
-                                </span>
-                                <span class="text-[16px] font-bold text-gray-900">฿<span id="merch-state-total">0</span></span>
-                            </div>
-                            <div class="flex justify-between items-center border-t border-gray-100 pt-2.5">
-                                <span class="text-[12px] text-gray-400 font-medium">รัฐช่วยเครื่องละ</span>
-                                <span class="text-[13px] font-bold text-green-500">฿<span id="merch-state-per-device">0</span></span>
-                            </div>
+                    <div class="flex gap-3">
+                        <div class="flex-1 bg-white rounded-[16px] p-3 swiftz-shadow border border-green-50">
+                            <p class="text-[11px] text-gray-500 font-medium mb-0.5">รัฐช่วยออก (รวม)</p>
+                            <p class="text-[16px] font-bold text-green-600">฿<span id="merch-state-total">0</span></p>
                         </div>
-
-                        <div class="flex justify-between items-center bg-white rounded-[18px] p-4 swiftz-shadow border border-blue-50">
-                            <span class="text-[13px] text-gray-500 font-medium flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-full bg-blue-400"></div> ต้องมีในเป๋าตัง (ต่อเครื่อง)
-                            </span>
-                            <span class="text-[16px] font-bold text-blue-600">฿<span id="merch-user-per-device">0</span></span>
-                        </div>
-
-                        <div class="flex justify-between items-center bg-white rounded-[18px] p-4 swiftz-shadow border border-orange-50">
-                            <span class="text-[13px] text-gray-500 font-medium flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-full bg-orange-400"></div> จ่ายเงินสด/โอนเพิ่มรวม
-                            </span>
-                            <span class="text-[16px] font-bold text-orange-600">฿<span id="merch-cash">0</span></span>
+                         <div class="flex-1 bg-white rounded-[16px] p-3 swiftz-shadow border border-indigo-50">
+                            <p class="text-[11px] text-gray-500 font-medium mb-0.5">สแกนเป๋าตัง (รวม)</p>
+                            <p class="text-[16px] font-bold text-indigo-600">฿<span id="merch-total-scan">0</span></p>
                         </div>
                     </div>
                 </div>
 
-                <h2 class="text-[16px] font-bold text-gray-800 mb-3.5 px-1">กรอกข้อมูลบิล</h2>
-                <div class="flex flex-col gap-3">
+                <div class="flex justify-between items-end mb-3 px-1">
+                    <h2 class="text-[16px] font-bold text-gray-800">กรอกยอดบิล และ สิทธิแต่ละคน</h2>
+                </div>
+                
+                <div class="flex flex-col gap-3 mb-6">
                     <!-- Bill Total -->
-                    <div id="box-bill" onclick="openKeypad('bill', 'ยอดบิลรวมทั้งหมด')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all hover:bg-gray-100 border-2 border-transparent">
+                    <div id="box-bill" onclick="openKeypad('bill', 'ยอดบิลรวมทั้งหมด')" class="input-box bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all border-2 border-transparent hover:bg-gray-100">
                         <div class="flex items-center gap-3.5">
                             <div class="w-11 h-11 rounded-full bg-white swiftz-shadow flex items-center justify-center text-indigo-600">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
-                                <p class="text-[13px] font-medium text-gray-500 mb-0.5">ยอดบิลรวม (บาท)</p>
+                                <p class="text-[13px] font-medium text-gray-500 mb-0.5">ยอดบิลอาหารรวมทั้งหมด</p>
                                 <div class="flex items-baseline gap-1">
                                     <span class="text-gray-400 text-sm">฿</span>
                                     <span id="val-bill" class="text-[22px] font-bold text-gray-900">0</span>
@@ -201,28 +183,64 @@
                         </div>
                     </div>
 
-                    <!-- Device Count Stepper -->
-                    <div class="bg-[#f8f9fa] rounded-[24px] p-4.5 px-5 py-3.5 flex items-center justify-between">
-                        <div class="flex items-center gap-3.5">
-                            <div class="w-11 h-11 rounded-full bg-white swiftz-shadow flex items-center justify-center text-purple-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <div>
-                                <p class="text-[14px] font-medium text-gray-900">จำนวนเครื่องที่สแกน</p>
-                            </div>
+                    <!-- Device List Container -->
+                    <div class="bg-white rounded-[24px] p-4 swiftz-shadow border border-gray-100 flex flex-col gap-2 relative mt-1">
+                        <div class="flex justify-between items-center mb-1 px-1">
+                            <span class="text-[14px] font-bold text-gray-800">ลูกค้าหารกัน <span id="split-count" class="text-indigo-600">1</span> คน</span>
+                            <button onclick="addMerchDevice()" class="text-[12px] bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-full font-bold active:bg-indigo-100 transition-colors flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg>
+                                เพิ่มคน
+                            </button>
                         </div>
-                        <div class="flex items-center gap-3 bg-white rounded-full p-1 swiftz-shadow border border-gray-50">
-                            <button onclick="changeDevice(-1)" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-700 active:scale-90 transition-transform">-</button>
-                            <span id="val-device" class="text-[18px] font-bold text-gray-900 w-6 text-center">1</span>
-                            <button onclick="changeDevice(1)" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-700 active:scale-90 transition-transform">+</button>
+                        
+                        <!-- List of inputs for quotas -->
+                        <div id="merch-devices-list" class="flex flex-col gap-2 mt-1">
+                            <!-- Injected by JS -->
                         </div>
                     </div>
                 </div>
+
+                <!-- 3 Split Mode Toggle -->
+                <div class="flex justify-between items-end mb-3 px-1 mt-2">
+                    <h2 class="text-[16px] font-bold text-gray-800">วิธีจัดสรรยอดการสแกน</h2>
+                </div>
+                <div class="bg-white p-2 rounded-[20px] swiftz-shadow border border-gray-100 mb-2">
+                    <div class="flex bg-[#f0f2f5] p-1.5 rounded-[16px] relative">
+                        <div id="split-slider" class="absolute top-1.5 bottom-1.5 bg-white rounded-[12px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-300 z-0" style="width: calc(33.33% - 4px); left: 6px;"></div>
+                        <button onclick="setSplitMode('equal')" class="flex-1 py-2.5 text-[12px] font-bold rounded-[12px] relative z-10 transition-colors text-indigo-700" id="btn-split-equal">หารเท่ากัน</button>
+                        <button onclick="setSplitMode('maximize')" class="flex-1 py-2.5 text-[12px] font-bold rounded-[12px] relative z-10 transition-colors text-gray-500" id="btn-split-max">คุ้มสุด ✨</button>
+                        <button onclick="setSplitMode('custom')" class="flex-1 py-2.5 text-[12px] font-bold rounded-[12px] relative z-10 transition-colors text-gray-500" id="btn-split-custom">กำหนดเอง</button>
+                    </div>
+                </div>
+
+                <!-- Custom Scan Box (Shows only when Custom Mode is selected) -->
+                <div id="custom-scan-container" class="hidden mt-2 mb-4">
+                    <div id="box-customScan" onclick="openKeypad('customScan', 'กำหนดยอดสแกนต่อเครื่อง')" class="input-box bg-[#fff0f5] rounded-[24px] p-4.5 px-5 py-4 cursor-pointer flex items-center justify-between transition-all border-2 border-purple-200">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-10 h-10 rounded-full bg-white swiftz-shadow flex items-center justify-center text-purple-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-[13px] font-bold text-purple-700 mb-0.5">ยอดสแกนที่ต้องการ (ต่อเครื่อง)</p>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="text-purple-400 text-sm">฿</span>
+                                    <span id="val-customScan" class="text-[20px] font-bold text-purple-700">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakdown Detail (Injected by JS) -->
+                <div id="merch-breakdown" class="flex flex-col gap-3 mt-4">
+                    <!-- Breakdown cards go here -->
+                </div>
+
             </div>
             
         </div>
 
-        <!-- Floating Calculate Button (Swiftz Style Green/Blue) -->
+        <!-- Floating Calculate Button -->
         <div class="absolute bottom-6 left-5 right-5 z-10" id="calc-btn-container">
             <button id="btn-calc" onclick="calculateAndShowResult()" class="w-full bg-[#83e85e] hover:bg-[#74d352] text-gray-900 text-[17px] font-bold py-4 rounded-[20px] shadow-[0_8px_24px_rgba(131,232,94,0.3)] transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
@@ -281,18 +299,16 @@
              ======================= -->
         <div id="result-overlay" class="absolute inset-0 bg-gray-900/40 z-50 hidden backdrop-blur-sm flex items-center justify-center p-5 opacity-0 transition-opacity duration-300">
             <div id="result-modal" class="w-full max-w-sm bg-white rounded-[32px] overflow-hidden shadow-2xl modal-enter relative">
-                
                 <div class="p-8 pb-6 text-center">
                     <div class="w-16 h-16 bg-[#83e85e] text-gray-900 rounded-full flex items-center justify-center mx-auto mb-5 shadow-[0_8px_20px_rgba(131,232,94,0.4)]">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
-                    <p class="text-[18px] font-bold text-gray-900 mb-2">สรุปข้อมูลเรียบร้อย</p>
-                    <p class="text-[14px] text-gray-500 mb-2">ข้อมูลอัปเดตลงในการ์ดสรุปยอดด้านบนแล้วครับ</p>
+                    <p class="text-[18px] font-bold text-gray-900 mb-2">อัปเดตยอดเรียบร้อย</p>
+                    <p class="text-[14px] text-gray-500 mb-2">ระบบได้จัดสรรยอดการสแกน และแสดงผลในการ์ดด้านบนแล้วครับ</p>
                 </div>
-                
                 <div class="p-5 pt-0">
                     <button onclick="closeResultModal()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-900 text-[16px] font-bold py-3.5 rounded-[20px] transition-all active:scale-[0.98]">
-                        ปิดหน้าต่าง
+                        ตกลง
                     </button>
                 </div>
             </div>
@@ -303,31 +319,32 @@
     <script>
         const MAX_STATE_PER_DAY = 200;
         const STATE_RATIO = 0.60;
-        const FULL_DEVICE_SCAN = 334; 
+        const FULL_DEVICE_SCAN = 333.33; 
         
         let activeInput = null;
         let isNewInput = false; 
         
         const state = {
             mode: 'customer', 
+            splitMode: 'equal', // 'equal' | 'maximize' | 'custom'
             price: '0',
             pocket: '0',
             quota: '0', 
             bill: '0',
-            devices: 1
+            merchQuotas: ['0'], 
+            customScan: '300' // Default เปลี่ยนให้สอดคล้องกับที่มักพิมพ์กันบ่อย
         };
 
         const quickButtons = {
             price: [
                 { label: '+50', val: 'add_50' },
                 { label: '+100', val: 'add_100' },
-                { label: 'สิทธิเต็ม (334)', val: 'set_334', primary: true }
+                { label: 'สิทธิเต็ม (334)', val: 'set_333.33', primary: true }
             ],
             pocket: [
-                { label: 'ไม่มีเงินเลย (0)', val: 'set_0', primary: true },
+                { label: 'ไม่มีเงิน (0)', val: 'set_0', primary: true },
                 { label: '50', val: 'set_50' },
-                { label: '100', val: 'set_100' },
-                { label: '300', val: 'set_300' }
+                { label: '100', val: 'set_100' }
             ],
             quota: [
                 { label: '200', val: 'set_200' },
@@ -338,20 +355,29 @@
                 { label: '+100', val: 'add_100' },
                 { label: '+500', val: 'add_500' },
                 { label: '+1000', val: 'add_1000' }
+            ],
+            merchQuota: [
+                { label: 'สิทธิหมด (0)', val: 'set_0' },
+                { label: '200', val: 'set_200' },
+                { label: 'เต็ม 1,000', val: 'set_1000', primary: true }
+            ],
+            customScan: [
+                { label: '300', val: 'set_300' },
+                { label: '500', val: 'set_500' },
+                { label: 'ยอดเต็มลิมิต', val: 'set_333.33', primary: true }
             ]
         };
 
         window.onload = function() {
+            renderMerchDevices();
             renderValues();
         }
 
         function switchMode(newMode) {
             state.mode = newMode;
-            
             let slider = document.getElementById('mode-slider');
             let btnCus = document.getElementById('btn-mode-customer');
             let btnMerch = document.getElementById('btn-mode-merchant');
-            
             let viewCus = document.getElementById('view-customer');
             let viewMerch = document.getElementById('view-merchant');
             let calcBtn = document.getElementById('btn-calc');
@@ -360,7 +386,6 @@
                 slider.style.transform = 'translateX(0)';
                 btnCus.classList.replace('text-gray-400', 'text-gray-900');
                 btnMerch.classList.replace('text-gray-900', 'text-gray-400');
-                
                 viewMerch.classList.add('hidden');
                 viewCus.classList.remove('hidden');
                 calcBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg> สรุปยอดลูกค้า`;
@@ -369,17 +394,93 @@
                 slider.style.transform = 'translateX(100%)';
                 btnMerch.classList.replace('text-gray-400', 'text-gray-900');
                 btnCus.classList.replace('text-gray-900', 'text-gray-400');
-                
                 viewCus.classList.add('hidden');
                 viewMerch.classList.remove('hidden');
-                calcBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg> คำนวณยอดร้านค้า`;
+                calcBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg> คำนวณบิลร้านค้า`;
                 calcBtn.className = "w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white text-[17px] font-bold py-4 rounded-[20px] shadow-[0_8px_24px_rgba(59,130,246,0.3)] transition-all transform active:scale-[0.98] flex items-center justify-center gap-2";
+            }
+            closeKeypad();
+            renderValues();
+        }
+
+        // ================= 3-WAY SPLIT MODE SWITCH =================
+        function setSplitMode(mode) {
+            state.splitMode = mode;
+            let slider = document.getElementById('split-slider');
+            let btnEq = document.getElementById('btn-split-equal');
+            let btnMax = document.getElementById('btn-split-max');
+            let btnCustom = document.getElementById('btn-split-custom');
+            let customBox = document.getElementById('custom-scan-container');
+
+            // Reset UI
+            btnEq.classList.replace('text-indigo-700', 'text-gray-500');
+            btnMax.classList.replace('text-indigo-700', 'text-gray-500');
+            btnCustom.classList.replace('text-indigo-700', 'text-gray-500');
+
+            if(mode === 'equal') {
+                slider.style.left = '6px';
+                btnEq.classList.replace('text-gray-500', 'text-indigo-700');
+                customBox.classList.add('hidden');
+            } else if (mode === 'maximize') {
+                slider.style.left = 'calc(33.33% + 2px)';
+                btnMax.classList.replace('text-gray-500', 'text-indigo-700');
+                customBox.classList.add('hidden');
+            } else {
+                slider.style.left = 'calc(66.66% - 2px)';
+                btnCustom.classList.replace('text-gray-500', 'text-indigo-700');
+                customBox.classList.remove('hidden');
             }
             
             closeKeypad();
             renderValues();
         }
 
+        // ================= DYNAMIC DEVICES LOGIC =================
+        function renderMerchDevices() {
+            const container = document.getElementById('merch-devices-list');
+            document.getElementById('split-count').innerText = state.merchQuotas.length;
+            
+            let html = '';
+            state.merchQuotas.forEach((q, index) => {
+                let showRemove = state.merchQuotas.length > 1;
+                html += `
+                <div id="box-merchQuota_${index}" class="input-box bg-[#f8f9fa] rounded-[16px] p-3 px-4 flex items-center justify-between border-2 border-transparent transition-all cursor-pointer hover:bg-gray-100" onclick="openKeypad('merchQuota_${index}', 'สิทธิคนที่ ${index+1}')">
+                    <div class="flex items-center gap-3">
+                        <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-[12px]">
+                            ${index + 1}
+                        </div>
+                        <span class="text-[13px] font-medium text-gray-600">สิทธิคงเหลือ</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-gray-400 text-[12px]">฿</span>
+                            <span id="val-merchQuota_${index}" class="text-[18px] font-bold text-gray-900">${formatDisplay(q)}</span>
+                        </div>
+                        ${showRemove ? `<button onclick="event.stopPropagation(); removeMerchDevice(${index})" class="w-6 h-6 rounded-full bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-100 ml-1 active:scale-90"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>` : ''}
+                    </div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function addMerchDevice() {
+            if(state.merchQuotas.length < 10) {
+                state.merchQuotas.push('0');
+                renderMerchDevices();
+                renderValues();
+            }
+        }
+
+        function removeMerchDevice(index) {
+            if(state.merchQuotas.length > 1) {
+                state.merchQuotas.splice(index, 1);
+                if(activeInput === `merchQuota_${index}`) closeKeypad();
+                renderMerchDevices();
+                renderValues();
+            }
+        }
+
+        // ================= KEYPAD LOGIC =================
         function openKeypad(id, title) {
             activeInput = id;
             isNewInput = true; 
@@ -388,13 +489,25 @@
             updateQuickBar();
 
             document.querySelectorAll('.input-box').forEach(el => {
-                el.classList.remove('border-blue-400', 'bg-blue-50/50');
-                el.classList.add('border-transparent', 'bg-[#f8f9fa]');
+                el.classList.remove('border-blue-400', 'bg-blue-50/50', 'border-indigo-400', 'bg-indigo-50/50', 'border-purple-300', 'bg-[#fff0f5]');
+                if(el.id === 'box-customScan') {
+                    el.classList.add('border-purple-200', 'bg-[#fff0f5]');
+                } else {
+                    el.classList.add('border-transparent', 'bg-[#f8f9fa]');
+                }
             });
 
             let activeBox = document.getElementById('box-' + id);
-            activeBox.classList.add('border-blue-400', 'bg-blue-50/50');
-            activeBox.classList.remove('border-transparent', 'bg-[#f8f9fa]');
+            if(activeBox) {
+                if(id === 'customScan') {
+                    activeBox.classList.add('border-purple-400', 'bg-purple-50');
+                    activeBox.classList.remove('border-purple-200', 'bg-[#fff0f5]');
+                } else {
+                    let color = state.mode === 'merchant' ? 'indigo' : 'blue';
+                    activeBox.classList.add(`border-${color}-400`, `bg-${color}-50/50`);
+                    activeBox.classList.remove('border-transparent', 'bg-[#f8f9fa]');
+                }
+            }
             
             let overlay = document.getElementById('keypad-overlay');
             let keypad = document.getElementById('keypad');
@@ -414,8 +527,12 @@
             overlay.classList.add('opacity-0');
             
             document.querySelectorAll('.input-box').forEach(el => {
-                el.classList.remove('border-blue-400', 'bg-blue-50/50');
-                el.classList.add('border-transparent', 'bg-[#f8f9fa]');
+                el.classList.remove('border-blue-400', 'bg-blue-50/50', 'border-indigo-400', 'bg-indigo-50/50', 'border-purple-400', 'bg-purple-50');
+                if(el.id === 'box-customScan') {
+                    el.classList.add('border-purple-200', 'bg-[#fff0f5]');
+                } else {
+                    el.classList.add('border-transparent', 'bg-[#f8f9fa]');
+                }
             });
 
             setTimeout(() => {
@@ -428,26 +545,42 @@
             const container = document.getElementById('quick-bar');
             if(!activeInput) return;
             
-            const btns = quickButtons[activeInput];
+            let type = activeInput.startsWith('merchQuota') ? 'merchQuota' : activeInput;
+            const btns = quickButtons[type];
+            
             let html = '';
             btns.forEach(btn => {
-                let cssClass = btn.primary 
-                    ? "bg-gray-900 text-white" 
-                    : "bg-gray-100 text-gray-700";
-                
+                let cssClass = btn.primary ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200";
                 html += `<button onclick="handleQuickAction('${btn.val}')" class="whitespace-nowrap px-4 py-1.5 text-[13px] font-medium rounded-full ${cssClass} transition-transform active:scale-95">${btn.label}</button>`;
             });
             container.innerHTML = html;
         }
 
+        function getActiveStateValue() {
+            if (activeInput.startsWith('merchQuota_')) {
+                let idx = parseInt(activeInput.split('_')[1]);
+                return state.merchQuotas[idx];
+            }
+            return state[activeInput];
+        }
+
+        function setActiveStateValue(val) {
+            if (activeInput.startsWith('merchQuota_')) {
+                let idx = parseInt(activeInput.split('_')[1]);
+                state.merchQuotas[idx] = val;
+            } else {
+                state[activeInput] = val;
+            }
+        }
+
         function handleQuickAction(action) {
-            let currentVal = parseFloat(state[activeInput]) || 0;
+            let currentVal = parseFloat(getActiveStateValue()) || 0;
             if (action.startsWith('add_')) {
                 let addAmount = parseFloat(action.split('_')[1]);
-                state[activeInput] = (currentVal + addAmount).toString();
+                setActiveStateValue((currentVal + addAmount).toString());
             } else if (action.startsWith('set_')) {
                 let setAmount = parseFloat(action.split('_')[1]);
-                state[activeInput] = setAmount.toString();
+                setActiveStateValue(setAmount.toString());
             }
             isNewInput = false; 
             renderValues();
@@ -455,7 +588,7 @@
 
         function pressKey(char) {
             if (!activeInput) return;
-            let val = state[activeInput];
+            let val = getActiveStateValue();
             
             if (isNewInput) {
                 val = char === '.' ? '0.' : (char === '00' ? '0' : char);
@@ -468,51 +601,45 @@
             }
             if(val.length > 7) return; 
             
-            state[activeInput] = val;
+            setActiveStateValue(val);
             renderValues();
         }
 
         function pressDelete() {
             if (!activeInput) return;
-            let val = state[activeInput];
+            let val = getActiveStateValue();
             isNewInput = false;
             if (val.length > 0) {
                 val = val.slice(0, -1);
             }
             if(val === '') val = '0';
             
-            state[activeInput] = val;
+            setActiveStateValue(val);
             renderValues();
         }
 
         function clearCurrent() {
             if (!activeInput) return;
-            state[activeInput] = '0';
+            setActiveStateValue('0');
             isNewInput = true;
             renderValues();
         }
-        
-        function changeDevice(amount) {
-            let current = parseInt(state.devices);
-            let next = current + amount;
-            if(next >= 1 && next <= 20) { 
-                state.devices = next;
-                renderValues();
-            }
-        }
 
         function renderValues() {
-            document.getElementById('val-price').innerText = formatDisplay(state.price);
-            document.getElementById('val-pocket').innerText = formatDisplay(state.pocket);
-            document.getElementById('val-quota').innerText = formatDisplay(state.quota);
-            
-            document.getElementById('val-bill').innerText = formatDisplay(state.bill);
-            document.getElementById('val-device').innerText = state.devices;
-            
             if(state.mode === 'customer') {
+                document.getElementById('val-price').innerText = formatDisplay(state.price);
+                document.getElementById('val-pocket').innerText = formatDisplay(state.pocket);
+                document.getElementById('val-quota').innerText = formatDisplay(state.quota);
                 calculateCustomerCard();
             } else {
-                calculateMerchantCard();
+                document.getElementById('val-bill').innerText = formatDisplay(state.bill);
+                document.getElementById('val-customScan').innerText = formatDisplay(state.customScan);
+                
+                state.merchQuotas.forEach((q, i) => {
+                    let el = document.getElementById(`val-merchQuota_${i}`);
+                    if(el) el.innerText = formatDisplay(q);
+                });
+                calculateMerchantSplit();
             }
         }
         
@@ -532,35 +659,134 @@
             document.getElementById('main-user').innerText = formatMoney(userNeedToPay);
         }
 
-        function calculateMerchantCard() {
+        // ================= SMART 3-WAY SPLIT ALGORITHMS =================
+        function calculateMerchantSplit() {
             let bill = parseFloat(state.bill) || 0;
-            let devices = parseInt(state.devices) || 1;
-            
-            let maxScannableTotal = devices * FULL_DEVICE_SCAN; 
-            
-            let scanPerDevice = 0;
-            let cashDifference = 0;
+            let quotas = state.merchQuotas.map(q => parseFloat(q) || 0);
+            let numPeople = quotas.length;
 
-            if (bill === 0) {
-                scanPerDevice = 0;
-            } else if (bill <= maxScannableTotal) {
-                scanPerDevice = bill / devices;
-            } else {
-                scanPerDevice = FULL_DEVICE_SCAN;
-                cashDifference = bill - maxScannableTotal;
+            let totalScan = 0;
+            let totalState = 0;
+            let totalCashDiff = 0;
+
+            let allocations = new Array(numPeople).fill(0);
+            let individualCashDiffs = new Array(numPeople).fill(0);
+            let maxScans = quotas.map(q => Math.min(q / STATE_RATIO, FULL_DEVICE_SCAN));
+
+            if (state.splitMode === 'equal') {
+                let fairShare = bill / numPeople;
+                for (let i = 0; i < numPeople; i++) {
+                    allocations[i] = Math.min(fairShare, maxScans[i]);
+                    individualCashDiffs[i] = Math.max(0, fairShare - allocations[i]);
+                }
+            } 
+            else if (state.splitMode === 'custom') {
+                let targetScan = parseFloat(state.customScan) || 0;
+                let remainingBill = bill; 
+                
+                for (let i = 0; i < numPeople; i++) {
+                    let actual = Math.min(targetScan, maxScans[i], remainingBill);
+                    allocations[i] = actual;
+                    individualCashDiffs[i] = Math.max(0, targetScan - maxScans[i]);
+                    remainingBill -= actual;
+                }
             }
-            
-            let stateContributionPerDevice = Math.round(scanPerDevice * STATE_RATIO * 100) / 100;
-            stateContributionPerDevice = Math.min(stateContributionPerDevice, MAX_STATE_PER_DAY);
-            
-            let userPayPerDevice = scanPerDevice - stateContributionPerDevice;
-            let totalStateSubsidy = stateContributionPerDevice * devices;
+            else {
+                let remainingBill = bill;
+                let activeIndices = quotas.map((_, i) => i);
 
-            document.getElementById('merch-scan').innerText = formatMoney(scanPerDevice);
-            document.getElementById('merch-state-total').innerText = formatMoney(totalStateSubsidy);
-            document.getElementById('merch-state-per-device').innerText = formatMoney(stateContributionPerDevice);
-            document.getElementById('merch-user-per-device').innerText = formatMoney(userPayPerDevice);
-            document.getElementById('merch-cash').innerText = formatMoney(cashDifference);
+                while (activeIndices.length > 0 && remainingBill > 0.005) {
+                    let splitAmount = remainingBill / activeIndices.length;
+                    let bottleneckIdx = -1;
+                    let minCapacity = Infinity;
+
+                    for (let i of activeIndices) {
+                        let remainingCapacity = maxScans[i] - allocations[i];
+                        if (remainingCapacity < splitAmount && remainingCapacity < minCapacity) {
+                            minCapacity = remainingCapacity;
+                            bottleneckIdx = i;
+                        }
+                    }
+
+                    if (bottleneckIdx !== -1) {
+                        let fillAmount = maxScans[bottleneckIdx] - allocations[bottleneckIdx];
+                        allocations[bottleneckIdx] += fillAmount;
+                        remainingBill -= fillAmount;
+                        activeIndices = activeIndices.filter(i => i !== bottleneckIdx);
+                    } else {
+                        for (let i of activeIndices) {
+                            allocations[i] += splitAmount;
+                        }
+                        remainingBill = 0;
+                        break;
+                    }
+                }
+            }
+
+            let breakdownHtml = '';
+            
+            allocations.forEach((actualScan, idx) => {
+                let statePays = Math.round(actualScan * STATE_RATIO * 100) / 100;
+                statePays = Math.min(statePays, MAX_STATE_PER_DAY, quotas[idx]); 
+                
+                let userAppPays = actualScan - statePays;
+                let cashDiff = individualCashDiffs[idx];
+
+                totalScan += actualScan;
+                totalState += statePays;
+
+                breakdownHtml += `
+                <div class="bg-white rounded-[20px] p-4 swiftz-shadow border border-gray-100 relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-indigo-500"></div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-bold text-gray-900 text-[15px] pl-1">คนที่ ${idx + 1}</span>
+                        <span class="text-[12px] text-gray-500 bg-gray-50 px-2 py-1 rounded-md border border-gray-100">สิทธิเหลือ ฿${formatMoney(quotas[idx])}</span>
+                    </div>
+                    
+                    ${state.splitMode === 'custom' && parseFloat(state.customScan) > 0 ? `
+                        <p class="text-[12px] text-gray-500 mb-1 pl-1 flex items-center gap-1">
+                            เป้าสแกนที่ตั้งไว้: ฿${formatMoney(parseFloat(state.customScan))}
+                        </p>
+                    ` : ''}
+
+                    <p class="text-[13.5px] text-indigo-600 font-bold mb-2.5 pl-1 flex items-center gap-1.5">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        ${state.splitMode === 'custom' ? 'สแกนแอปได้จริง:' : 'กดแอปสแกน:'} ฿${formatMoney(actualScan)}
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-2.5 mb-1">
+                        <div class="bg-[#f0fdf4] rounded-[14px] p-2.5 border border-green-100/50">
+                            <p class="text-[10px] text-green-600 font-medium mb-0.5">รัฐช่วย (60%)</p>
+                            <p class="text-[15px] font-bold text-green-700">฿${formatMoney(statePays)}</p>
+                        </div>
+                        <div class="bg-blue-50/60 rounded-[14px] p-2.5 border border-blue-100/50">
+                            <p class="text-[10px] text-blue-500 font-medium mb-0.5">เป๋าตังคุณ (40%)</p>
+                            <p class="text-[15px] font-bold text-blue-700">฿${formatMoney(userAppPays)}</p>
+                        </div>
+                    </div>
+                    
+                    ${cashDiff > 0 ? `
+                    <div class="bg-orange-50/80 rounded-[14px] p-2.5 flex justify-between items-center mt-2 border border-orange-100/50">
+                        <p class="text-[11px] text-orange-700 font-medium flex items-center gap-1.5">
+                            <div class="w-1.5 h-1.5 rounded-full bg-orange-500"></div> จ่ายส่วนต่าง (เงินสด)
+                        </p>
+                        <p class="text-[14px] font-bold text-orange-600">+ ฿${formatMoney(cashDiff)}</p>
+                    </div>
+                    ` : ''}
+                </div>`;
+            });
+
+            totalCashDiff = Math.max(0, bill - totalScan);
+
+            document.getElementById('merch-cash').innerText = formatMoney(totalCashDiff);
+            document.getElementById('merch-state-total').innerText = formatMoney(totalState);
+            document.getElementById('merch-total-scan').innerText = formatMoney(totalScan);
+            
+            if(bill > 0) {
+                document.getElementById('merch-breakdown').innerHTML = breakdownHtml;
+            } else {
+                document.getElementById('merch-breakdown').innerHTML = '<div class="text-center text-gray-400 text-sm py-4">กรุณาระบุยอดบิลด้านบน</div>';
+            }
         }
 
         function formatDisplay(valStr) {
@@ -573,31 +799,6 @@
         function calculateAndShowResult() {
             closeKeypad();
             document.getElementById('main-scroll-area').scrollTo({top: 0, behavior: 'smooth'});
-
-            let overlay = document.getElementById('result-overlay');
-            let modal = document.getElementById('result-modal');
-            
-            overlay.classList.remove('hidden');
-            modal.classList.remove('modal-exit', 'modal-exit-active');
-            modal.classList.add('modal-enter');
-            void modal.offsetWidth; 
-            overlay.classList.remove('opacity-0');
-            modal.classList.add('modal-enter-active');
-        }
-
-        function closeResultModal() {
-            let overlay = document.getElementById('result-overlay');
-            let modal = document.getElementById('result-modal');
-            
-            overlay.classList.add('opacity-0');
-            modal.classList.remove('modal-enter', 'modal-enter-active');
-            modal.classList.add('modal-exit-active');
-            
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-                modal.classList.remove('modal-exit-active');
-                modal.classList.add('modal-exit');
-            }, 300);
         }
 
         function formatMoney(num) {
